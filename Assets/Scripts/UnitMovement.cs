@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private int moveDirection = 1;
+    [SerializeField] Rigidbody2D rb = null;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
+        moveCharacter();
+    }
+
+    private void moveCharacter()
+    {
+        Vector2 characterVelocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
+        rb.velocity = characterVelocity;
+
+        //bool characterHasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         
     }
 }
