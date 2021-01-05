@@ -7,6 +7,8 @@ public class Upgrades : MonoBehaviour
     private WinCondition winCondition;
     private GoldHandler goldHandler;
 
+    [SerializeField] BuyUnitButton knight2BuyUnitButton;
+
     private void Start()
     {
         winCondition = FindObjectOfType<WinCondition>();
@@ -18,5 +20,15 @@ public class Upgrades : MonoBehaviour
         goldHandler.startingWaveGold = goldHandler.startingWaveGold + 20;
 
         winCondition.ShowNewWaveText();
+    }
+
+    public void UnlockKnight2()
+    {
+        knight2BuyUnitButton.isUnlocked = true;
+
+        knight2BuyUnitButton.CheckIfUnlocked();
+
+        winCondition.ShowNewWaveText();
+
     }
 }

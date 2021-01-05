@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccf5552fd62328745b836a20aad111fc, type: 3}
-  m_Name: BigPirate
+  m_Name: Knight_2
   m_EditorClassIdentifier: 
-  unitName: bigPirate
-  damage: 3
-  isEnemy: 1
-  unitPrefab: {fileID: 760928826124964178, guid: 9737d484e483da64cb207acdf7072baf, type: 3}
+  unitName: Knight_2
+  damage: 1
+  isEnemy: 0
+  unitPrefab: {fileID: 760928826124964178, guid: 00b76e0258940164b8e0d0ac845a4273, type: 3}
   startingHealth: 5
+  goldCost: 20

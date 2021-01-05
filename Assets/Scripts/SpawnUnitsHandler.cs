@@ -25,4 +25,19 @@ public class SpawnUnitsHandler : MonoBehaviour
 
         goldHandler.UpdateCurrentGold();
     }
+
+    public void SpawnFriendlyUnit(UnitConfig unitConfig)
+    {
+        if (goldHandler.currentGold < unitConfig.goldCost) { return; }
+
+        goldHandler.currentGold = goldHandler.currentGold - unitConfig.goldCost;
+
+        float randomYOffset = Random.Range(-4f, 4f);
+        Vector3 newSpawnPosition = new Vector2(spawnPoint.position.x, spawnPoint.position.y + randomYOffset);
+
+        GameObject newSpawn = Instantiate(unitConfig.unitPrefab, newSpawnPosition, transform.rotation);
+        newSpawn.transform.parent = spawnUnitsContainer.transform;
+
+        goldHandler.UpdateCurrentGold();
+    }
 }
