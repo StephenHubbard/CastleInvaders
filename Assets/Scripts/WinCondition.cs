@@ -25,6 +25,8 @@ public class WinCondition : MonoBehaviour
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
         goldHandler = FindObjectOfType<GoldHandler>();
+
+        UpdateSliderMaxValue();
     }
 
     private void Update()
@@ -35,6 +37,7 @@ public class WinCondition : MonoBehaviour
             checkWinCondition();
         }
     }
+
 
     private void updateSlider()
     {
@@ -79,7 +82,6 @@ public class WinCondition : MonoBehaviour
 
     private void startNewRound()
     {
-        print("new round starting");
 
         goldHandler.newWaveGold();
 
@@ -87,9 +89,16 @@ public class WinCondition : MonoBehaviour
 
         roundComplete = false;
 
-        enemiesLeft = 10 + currentRound;
+        enemiesLeft = enemiesLeft + currentRound * 2;
+
+        UpdateSliderMaxValue();
 
         enemySpawner.startNewRound();
+    }
+
+    private void UpdateSliderMaxValue()
+    {
+        slider.maxValue = enemiesLeft;
     }
 
 
