@@ -17,7 +17,7 @@ public class SpawnUnitsHandler : MonoBehaviour
         float randomYOffset = Random.Range(-3.5f, 3.5f);
         Vector3 newSpawnPosition = new Vector2(spawnPoint.position.x, spawnPoint.position.y + randomYOffset);
 
-        Instantiate(Knight1_prefab, newSpawnPosition, Quaternion.Euler(new Vector2(0, 180)));
+        Instantiate(Knight1_prefab, newSpawnPosition, transform.rotation);
 
         goldHandler.UpdateCurrentGold();
     }
