@@ -5,25 +5,38 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] public UnitConfig unitConfig;
+    [SerializeField] private GameObject spawnUnitsContainer = null;
+
+    private WinCondition winCondition;
+
 
     private void Start()
+    {
+        winCondition = FindObjectOfType<WinCondition>();
+        StartCoroutine(SpawnUnitsTimer());
+    }
+
+    public void startNewRound()
     {
         StartCoroutine(SpawnUnitsTimer());
     }
 
     private IEnumerator SpawnUnitsTimer()
     {
-        SpawnEnemyUnit();
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(SpawnUnitsTimer());
-
+        if (winCondition.roundComplete == false)
+        {
+            SpawnEnemyUnit();
+            yield return new WaitForSeconds(2f);
+            StartCoroutine(SpawnUnitsTimer());
+        }
     }
 
     private void SpawnEnemyUnit()
     {
-        float randomYOffset = Random.Range(-5f, 5f);
+        float randomYOffset = Random.Range(-4f, 4f);
         Vector3 newSpawnPosition = new Vector2(transform.position.x, transform.position.y + randomYOffset);
 
-        Instantiate(unitConfig.unitPrefab, newSpawnPosition, transform.rotation);
+        GameObject newSpawn = Instantiate(unitConfig.unitPrefab, newSpawnPosition, transform.rotation);
+        newSpawn.transform.parent = spawnUnitsContainer.transform;
     }
 }

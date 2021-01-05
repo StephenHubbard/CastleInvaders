@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnUnitsHandler : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint = null;
-
+    [SerializeField] private GameObject spawnUnitsContainer = null;
     [SerializeField] GoldHandler goldHandler = null;
 
     [SerializeField] UnitConfig unitConfig_Knight_1 = null;
@@ -17,10 +17,11 @@ public class SpawnUnitsHandler : MonoBehaviour
 
         goldHandler.currentGold = goldHandler.currentGold - unitConfig_Knight_1.goldCost;
 
-        float randomYOffset = Random.Range(-5f, 5f);
+        float randomYOffset = Random.Range(-4f, 4f);
         Vector3 newSpawnPosition = new Vector2(spawnPoint.position.x, spawnPoint.position.y + randomYOffset);
 
-        Instantiate(unitConfig_Knight_1.unitPrefab, newSpawnPosition, transform.rotation);
+        GameObject newSpawn =  Instantiate(unitConfig_Knight_1.unitPrefab, newSpawnPosition, transform.rotation);
+        newSpawn.transform.parent = spawnUnitsContainer.transform;
 
         goldHandler.UpdateCurrentGold();
     }
