@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf5552fd62328745b836a20aad111fc, type: 3}
   m_Name: BigPirate
   m_EditorClassIdentifier: 
-  unitName: 
-  damage: 1
-  isEnemy: 0
-  unitPrefab: {fileID: 0}
-  startingHealth: 3
+  unitName: bigPirate
+  damage: 3
+  isEnemy: 1
+  unitPrefab: {fileID: 760928826124964178, guid: 9737d484e483da64cb207acdf7072baf, type: 3}
+  startingHealth: 5

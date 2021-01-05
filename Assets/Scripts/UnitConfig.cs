@@ -10,6 +10,7 @@ public class UnitConfig : ScriptableObject
     [SerializeField] public bool isEnemy = false;
     [SerializeField] public GameObject unitPrefab = null;
     [SerializeField] public int startingHealth = 3;
+    [SerializeField] public int goldCost = 0;
 
     public int GetDamage()
     {

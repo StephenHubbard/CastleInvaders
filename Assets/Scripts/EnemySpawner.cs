@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemyUnit()
     {
-        float randomYOffset = Random.Range(-3.5f, 3.5f);
+        float randomYOffset = Random.Range(-5f, 5f);
         Vector3 newSpawnPosition = new Vector2(transform.position.x, transform.position.y + randomYOffset);
 
         Instantiate(unitConfig.unitPrefab, newSpawnPosition, transform.rotation);

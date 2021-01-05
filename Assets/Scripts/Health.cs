@@ -12,12 +12,16 @@ public class Health : MonoBehaviour
 
     public UnitConfig unitConfig;
 
+    private WinCondition winCondition;
+
     private void Start()
     {
         if (unitConfig == null) { return; }
 
         currentHealth = unitConfig.startingHealth;
         SetMaxHealth(unitConfig.startingHealth);
+
+        winCondition = FindObjectOfType<WinCondition>();
     }
 
     private void Update()
@@ -30,6 +34,11 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
+            // detect if enemy unit
+            if (!GetComponent<DraggableUnit>())
+            {
+                winCondition.enemiesLeft--;
+            }
         }
     }
 

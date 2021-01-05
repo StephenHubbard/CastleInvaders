@@ -16,3 +16,5 @@ MonoBehaviour:
   damage: 1
   isEnemy: 0
   unitPrefab: {fileID: 760928826124964178, guid: 9737d484e483da64cb207acdf7072baf, type: 3}
+  startingHealth: 3
+  goldCost: 10

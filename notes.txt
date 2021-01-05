@@ -1,0 +1,10 @@
+castle invaders
+
+goals to learn: 
+
+new unity 2d lighting system
+
+
+colliders and myAttacker are buggy
+
+

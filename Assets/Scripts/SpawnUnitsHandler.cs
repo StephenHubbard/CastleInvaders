@@ -5,19 +5,22 @@ using UnityEngine;
 public class SpawnUnitsHandler : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint = null;
-    [SerializeField] private GameObject Knight1_prefab = null;
 
     [SerializeField] GoldHandler goldHandler = null;
+
+    [SerializeField] UnitConfig unitConfig_Knight_1 = null;
 
 
     public void spawnKnight1()
     {
-        goldHandler.currentGold = goldHandler.currentGold - 10;
+        if (goldHandler.currentGold < unitConfig_Knight_1.goldCost) { return; }
 
-        float randomYOffset = Random.Range(-3.5f, 3.5f);
+        goldHandler.currentGold = goldHandler.currentGold - unitConfig_Knight_1.goldCost;
+
+        float randomYOffset = Random.Range(-5f, 5f);
         Vector3 newSpawnPosition = new Vector2(spawnPoint.position.x, spawnPoint.position.y + randomYOffset);
 
-        Instantiate(Knight1_prefab, newSpawnPosition, transform.rotation);
+        Instantiate(unitConfig_Knight_1.unitPrefab, newSpawnPosition, transform.rotation);
 
         goldHandler.UpdateCurrentGold();
     }
