@@ -35,10 +35,7 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
             // detect if enemy unit
-            if (!GetComponent<DraggableUnit>())
-            {
-                winCondition.enemiesLeft--;
-            }
+            
         }
     }
 

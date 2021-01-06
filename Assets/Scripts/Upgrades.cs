@@ -16,6 +16,7 @@ public class Upgrades : MonoBehaviour
     {
         winCondition = FindObjectOfType<WinCondition>();
         goldHandler = FindObjectOfType<GoldHandler>();
+
     }
 
     public void MoreGoldUpgrade()

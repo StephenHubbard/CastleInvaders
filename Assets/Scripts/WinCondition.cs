@@ -13,9 +13,11 @@ public class WinCondition : MonoBehaviour
     [SerializeField] TMP_Text newWaveText = null;
     [SerializeField] GameObject waveCompleteGameObject = null;
     [SerializeField] private GameObject spawnUnitsContainer = null;
+    [SerializeField] private Transform SpawnedUnitsContainerEnemy = null;
 
     private EnemySpawner enemySpawner;
     private GoldHandler goldHandler;
+    private SpawnUnitsHandler spawnUnitsHandler;
 
     public int currentRound = 1;
 
@@ -25,6 +27,7 @@ public class WinCondition : MonoBehaviour
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
         goldHandler = FindObjectOfType<GoldHandler>();
+        spawnUnitsHandler = FindObjectOfType<SpawnUnitsHandler>();
 
         UpdateSliderMaxValue();
     }
@@ -46,7 +49,7 @@ public class WinCondition : MonoBehaviour
 
     private void checkWinCondition()
     {
-        if (slider.value <= 0)
+        if (slider.value <= 0 && !checkIfEnemiesExist())
         {
             waveCompleteGameObject.SetActive(true);
 
@@ -59,6 +62,18 @@ public class WinCondition : MonoBehaviour
 
             currentRound++;
 
+        }
+    }
+
+    private bool checkIfEnemiesExist()
+    {
+        if (SpawnedUnitsContainerEnemy.childCount > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -84,6 +99,8 @@ public class WinCondition : MonoBehaviour
     {
 
         goldHandler.newWaveGold();
+
+        spawnUnitsHandler.newWaveStart();
 
         newWaveTextContainer.SetActive(false);
 

@@ -39,6 +39,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemyUnit()
     {
         unitsToSpawnThisWave--;
+        winCondition.enemiesLeft--;
         float randomYOffset = Random.Range(-4f, 4f);
         Vector3 newSpawnPosition = new Vector2(transform.position.x, transform.position.y + randomYOffset);
 

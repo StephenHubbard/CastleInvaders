@@ -1,21 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class DraggableUnit : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class DraggableUnit : MonoBehaviour
 {
-    [SerializeField] private LayerMask draggableLayerMask = new LayerMask();
+    [SerializeField] GameObject draggableConjurorModel = null;
+    [SerializeField] Transform goldConjurorTransform = null;
 
     private float startPosX;
     private float startPosY;
     private bool isBeingHeld = false;
+    private bool isInsideTrashBarrel = false;
 
     private Camera mainCamera;
+    private GoldConjuror goldConjuror;
 
     private void Start()
     {
         mainCamera = Camera.main;
+
+        goldConjuror = FindObjectOfType<GoldConjuror>();
     }
 
     private void Update()
@@ -48,13 +52,52 @@ public class DraggableUnit : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private void OnMouseUp()
     {
         isBeingHeld = false;
+
+        if (isInsideTrashBarrel)
+        {
+            Destroy(gameObject);
+
+            if (gameObject.transform.root.GetComponent<GoldConjuror>() && goldConjuror.amountOfConjurors > 0)
+            {
+                goldConjuror.amountOfConjurors--;
+            }
+        }
+
+        if (gameObject.transform.root.GetComponent<GoldConjuror>() && !isInsideTrashBarrel)
+        {
+            SpawnNewConjurorModel();
+            Destroy(gameObject);
+
+        }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    private void SpawnNewConjurorModel()
     {
+        Vector3 newPos = new Vector3(goldConjurorTransform.position.x, goldConjurorTransform.position.y, goldConjurorTransform.position.z - 1);
+        GameObject newConjuror = Instantiate(draggableConjurorModel, newPos, transform.rotation);
+
+        newConjuror.transform.parent = goldConjurorTransform.transform.parent;
+
+        newConjuror.GetComponent<DraggableUnit>().enabled = true;
+        newConjuror.GetComponent<BoxCollider2D>().enabled = true;
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Barrel"))
+        {
+            isInsideTrashBarrel = true;
+        }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Barrel"))
+        {
+            isInsideTrashBarrel = false;
+        }
+    }
+
+    
+
 }
