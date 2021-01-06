@@ -8,6 +8,9 @@ public class Upgrades : MonoBehaviour
     private GoldHandler goldHandler;
 
     [SerializeField] BuyUnitButton knight2BuyUnitButton;
+    [SerializeField] BuyUnitButton goldConjurorBuyUnitButton;
+    [SerializeField] GameObject goldConjurorGameObject = null;
+
 
     private void Start()
     {
@@ -29,6 +32,16 @@ public class Upgrades : MonoBehaviour
         knight2BuyUnitButton.CheckIfUnlocked();
 
         winCondition.ShowNewWaveText();
+    }
 
+    public void UnlockGoldConjuror()
+    {
+        goldConjurorBuyUnitButton.isUnlocked = true;
+
+        goldConjurorBuyUnitButton.CheckIfUnlocked();
+
+        goldConjurorGameObject.SetActive(true);
+
+        winCondition.ShowNewWaveText();
     }
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccf5552fd62328745b836a20aad111fc, type: 3}
-  m_Name: Knight_1
+  m_Name: GoldConjuror
   m_EditorClassIdentifier: 
-  unitName: Knight_1
-  damage: 1
+  unitName: GoldConjuror
+  damage: 0
   isEnemy: 0
-  unitPrefab: {fileID: 760928826124964178, guid: 9737d484e483da64cb207acdf7072baf, type: 3}
-  startingHealth: 3
+  unitPrefab: {fileID: 3326852206102816766, guid: 1fe7f7447f0759d4b91a8e9639ce3a23, type: 3}
+  startingHealth: 1
   goldCost: 5
