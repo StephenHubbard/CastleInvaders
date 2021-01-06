@@ -4,6 +4,9 @@ goals to learn:
 
 new unity 2d lighting system
 
+castle hitpoints ui upgrades 50/10 
+heal or up max health
+
 
 colliders and myAttacker are buggy
 

@@ -6,6 +6,7 @@ public class Upgrades : MonoBehaviour
 {
     private WinCondition winCondition;
     private GoldHandler goldHandler;
+    private SpawnUnitsHandler spawnUnitsHandler;
 
     [SerializeField] BuyUnitButton knight2BuyUnitButton;
     [SerializeField] BuyUnitButton goldConjurorBuyUnitButton;
@@ -16,12 +17,12 @@ public class Upgrades : MonoBehaviour
     {
         winCondition = FindObjectOfType<WinCondition>();
         goldHandler = FindObjectOfType<GoldHandler>();
-
+        spawnUnitsHandler = FindObjectOfType<SpawnUnitsHandler>();
     }
 
     public void MoreGoldUpgrade()
     {
-        goldHandler.startingWaveGold = goldHandler.startingWaveGold + 20;
+        goldHandler.startingWaveGold = goldHandler.startingWaveGold + 10;
 
         winCondition.ShowNewWaveText();
     }
@@ -42,6 +43,13 @@ public class Upgrades : MonoBehaviour
         goldConjurorBuyUnitButton.CheckIfUnlocked();
 
         goldConjurorGameObject.SetActive(true);
+
+        winCondition.ShowNewWaveText();
+    }
+
+    public void MoreMaxUnits()
+    {
+        spawnUnitsHandler.maxAmountOfFriendlyUnits += 2;
 
         winCondition.ShowNewWaveText();
     }

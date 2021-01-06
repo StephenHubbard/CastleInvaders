@@ -18,6 +18,7 @@ public class WinCondition : MonoBehaviour
     private EnemySpawner enemySpawner;
     private GoldHandler goldHandler;
     private SpawnUnitsHandler spawnUnitsHandler;
+    private GoldConjuror goldConjuror;
 
     public int currentRound = 1;
 
@@ -28,6 +29,7 @@ public class WinCondition : MonoBehaviour
         enemySpawner = FindObjectOfType<EnemySpawner>();
         goldHandler = FindObjectOfType<GoldHandler>();
         spawnUnitsHandler = FindObjectOfType<SpawnUnitsHandler>();
+        goldConjuror = FindObjectOfType<GoldConjuror>();
 
         UpdateSliderMaxValue();
     }
@@ -97,16 +99,17 @@ public class WinCondition : MonoBehaviour
 
     private void startNewRound()
     {
-
         goldHandler.newWaveGold();
 
         spawnUnitsHandler.newWaveStart();
+
+        goldConjuror.amountOfConjurors = 0;
 
         newWaveTextContainer.SetActive(false);
 
         roundComplete = false;
 
-        enemiesLeft = enemiesLeft + currentRound * 2;
+        enemiesLeft = enemiesLeft + currentRound;
 
         UpdateSliderMaxValue();
 
