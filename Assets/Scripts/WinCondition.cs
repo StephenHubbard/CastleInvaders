@@ -19,6 +19,7 @@ public class WinCondition : MonoBehaviour
     private GoldHandler goldHandler;
     private SpawnUnitsHandler spawnUnitsHandler;
     private GoldConjuror goldConjuror;
+    private SpellHandler spellHandler;
 
     public int currentWave = 1;
 
@@ -30,6 +31,7 @@ public class WinCondition : MonoBehaviour
         goldHandler = FindObjectOfType<GoldHandler>();
         spawnUnitsHandler = FindObjectOfType<SpawnUnitsHandler>();
         goldConjuror = FindObjectOfType<GoldConjuror>();
+        spellHandler = FindObjectOfType<SpellHandler>();
 
         UpdateSliderMaxValue();
     }
@@ -102,6 +104,8 @@ public class WinCondition : MonoBehaviour
         goldHandler.newWaveGold();
 
         spawnUnitsHandler.newWaveStart();
+
+        spellHandler.explosionSpells = 1;
 
         goldConjuror.amountOfConjurors = 0;
 

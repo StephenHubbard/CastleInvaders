@@ -7,10 +7,12 @@ public class Upgrades : MonoBehaviour
     private WinCondition winCondition;
     private GoldHandler goldHandler;
     private SpawnUnitsHandler spawnUnitsHandler;
+    private SpellHandler spellHandler;
 
     [SerializeField] BuyUnitButton knight2BuyUnitButton;
     [SerializeField] BuyUnitButton knight3BuyUnitButton;
     [SerializeField] BuyUnitButton goldConjurorBuyUnitButton;
+    [SerializeField] BuyUnitButton explosionSpellButton;
     [SerializeField] GameObject goldConjurorGameObject = null;
     [SerializeField] Health castleHealth = null;
 
@@ -20,6 +22,7 @@ public class Upgrades : MonoBehaviour
         winCondition = FindObjectOfType<WinCondition>();
         goldHandler = FindObjectOfType<GoldHandler>();
         spawnUnitsHandler = FindObjectOfType<SpawnUnitsHandler>();
+        spellHandler = FindObjectOfType<SpellHandler>();
     }
 
     public void MoreGoldUpgrade()
@@ -47,7 +50,6 @@ public class Upgrades : MonoBehaviour
         knight3BuyUnitButton.CheckIfUnlocked();
 
         StartNewWave();
-
     }
 
     public void UnlockGoldConjuror()
@@ -59,7 +61,15 @@ public class Upgrades : MonoBehaviour
         goldConjurorGameObject.SetActive(true);
 
         StartNewWave();
+    }
 
+    public void UnlockExplosionSpell()
+    {
+        explosionSpellButton.isUnlocked = true;
+
+        explosionSpellButton.CheckIfUnlocked();
+
+        StartNewWave();
     }
 
     public void MoreMaxUnits()
@@ -87,6 +97,8 @@ public class Upgrades : MonoBehaviour
 
         StartNewWave();
     }
+
+    
 
     private void StartNewWave()
     {

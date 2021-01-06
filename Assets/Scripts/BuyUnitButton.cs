@@ -17,7 +17,10 @@ public class BuyUnitButton : MonoBehaviour
     {
         spawnUnitsHandler = FindObjectOfType<SpawnUnitsHandler>();
 
-        goldText.text = unitConfig.goldCost.ToString();
+        if (unitConfig != null)
+        {
+            goldText.text = unitConfig.goldCost.ToString();
+        }
 
         CheckIfUnlocked();
     }
