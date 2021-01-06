@@ -20,7 +20,7 @@ public class WinCondition : MonoBehaviour
     private SpawnUnitsHandler spawnUnitsHandler;
     private GoldConjuror goldConjuror;
 
-    public int currentRound = 1;
+    public int currentWave = 1;
 
     public bool roundComplete = false;
 
@@ -62,7 +62,7 @@ public class WinCondition : MonoBehaviour
 
             roundComplete = true;
 
-            currentRound++;
+            currentWave++;
 
         }
     }
@@ -85,7 +85,7 @@ public class WinCondition : MonoBehaviour
 
         newWaveTextContainer.SetActive(true);
 
-        newWaveText.text = $"Wave {currentRound} Incoming!";
+        newWaveText.text = $"Wave {currentWave} Incoming!";
 
         StartNextRound();
     }
@@ -109,7 +109,7 @@ public class WinCondition : MonoBehaviour
 
         roundComplete = false;
 
-        enemiesLeft = enemiesLeft + currentRound;
+        enemiesLeft = enemiesLeft + currentWave;
 
         UpdateSliderMaxValue();
 

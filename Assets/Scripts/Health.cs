@@ -2,31 +2,75 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
     public Slider slider;
     public int currentHealth;
+    public int castleMaxHealth;
     public Gradient gradient;
     public Image fill;
-
     public UnitConfig unitConfig;
 
+    [SerializeField] TMP_Text castleHitPointsText = null;
+
     private WinCondition winCondition;
+
+    private void Awake()
+    {
+        winCondition = FindObjectOfType<WinCondition>();
+
+    }
 
     private void Start()
     {
         if (unitConfig == null) { return; }
 
+        DetectIfCastle();
+
         currentHealth = unitConfig.startingHealth;
+
         SetMaxHealth(unitConfig.startingHealth);
 
-        winCondition = FindObjectOfType<WinCondition>();
+        DetectIfEnemyHealthUpgrade();
+
+    }
+
+    private void DetectIfEnemyHealthUpgrade()
+    {
+        if (unitConfig.isEnemy)
+        {
+            int healthBonus;
+
+            healthBonus = winCondition.currentWave / 5;
+
+            SetMaxHealth(unitConfig.startingHealth + healthBonus);
+
+            currentHealth = unitConfig.startingHealth + healthBonus;
+        }
+    }
+
+    private void DetectIfCastle()
+    {
+        if (unitConfig.unitName == "Castle_main")
+        {
+            castleMaxHealth = currentHealth;
+        }
     }
 
     private void Update()
     {
         Die();
+        UpdateCastleHitPointsText();
+        SetHealth(currentHealth);
+
+    }
+
+    private void UpdateCastleHitPointsText()
+    {
+        if (unitConfig.unitName != "Castle_main") { return; }
+        castleHitPointsText.text = $"{currentHealth} / {castleMaxHealth}";
     }
 
     private void Die()
@@ -43,7 +87,6 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
 
-        SetHealth(currentHealth);
     }
 
     public void SetMaxHealth(int health)

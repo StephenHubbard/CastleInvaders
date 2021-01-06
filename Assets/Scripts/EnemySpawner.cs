@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] public UnitConfig unitConfig;
+    [SerializeField] public UnitConfig[] unitConfigs;
     [SerializeField] private GameObject spawnUnitsContainer = null;
     [SerializeField] private int unitsToSpawnThisWave;
 
     private WinCondition winCondition;
 
-
+    private int unitIndexToSpawn = 0;
 
     private void Start()
     {
         winCondition = FindObjectOfType<WinCondition>();
+
         unitsToSpawnThisWave = winCondition.enemiesLeft;
         StartCoroutine(SpawnUnitsTimer());
     }
@@ -43,7 +44,26 @@ public class EnemySpawner : MonoBehaviour
         float randomYOffset = Random.Range(-4f, 4f);
         Vector3 newSpawnPosition = new Vector2(transform.position.x, transform.position.y + randomYOffset);
 
-        GameObject newSpawn = Instantiate(unitConfig.unitPrefab, newSpawnPosition, transform.rotation);
+        WhichUnitIndexToSpawn();
+        GameObject newSpawn = Instantiate(unitConfigs[unitIndexToSpawn].unitPrefab, newSpawnPosition, transform.rotation);
         newSpawn.transform.parent = spawnUnitsContainer.transform;
+    }
+
+    private void WhichUnitIndexToSpawn()
+    {
+        int maxNum;
+
+        if (winCondition.currentWave > unitConfigs.Length)
+        {
+            maxNum = unitConfigs.Length;
+        }
+        else
+        {
+            maxNum = winCondition.currentWave / 2;
+        }
+
+        int randomIndex = Random.Range(0, maxNum);
+
+        unitIndexToSpawn = randomIndex;
     }
 }

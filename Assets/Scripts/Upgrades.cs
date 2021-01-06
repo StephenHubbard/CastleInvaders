@@ -9,8 +9,10 @@ public class Upgrades : MonoBehaviour
     private SpawnUnitsHandler spawnUnitsHandler;
 
     [SerializeField] BuyUnitButton knight2BuyUnitButton;
+    [SerializeField] BuyUnitButton knight3BuyUnitButton;
     [SerializeField] BuyUnitButton goldConjurorBuyUnitButton;
     [SerializeField] GameObject goldConjurorGameObject = null;
+    [SerializeField] Health castleHealth = null;
 
 
     private void Start()
@@ -24,7 +26,8 @@ public class Upgrades : MonoBehaviour
     {
         goldHandler.startingWaveGold = goldHandler.startingWaveGold + 10;
 
-        winCondition.ShowNewWaveText();
+        StartNewWave();
+
     }
 
     public void UnlockKnight2()
@@ -33,7 +36,18 @@ public class Upgrades : MonoBehaviour
 
         knight2BuyUnitButton.CheckIfUnlocked();
 
-        winCondition.ShowNewWaveText();
+        StartNewWave();
+
+    }
+
+    public void UnlockKnight3()
+    {
+        knight3BuyUnitButton.isUnlocked = true;
+
+        knight3BuyUnitButton.CheckIfUnlocked();
+
+        StartNewWave();
+
     }
 
     public void UnlockGoldConjuror()
@@ -44,13 +58,38 @@ public class Upgrades : MonoBehaviour
 
         goldConjurorGameObject.SetActive(true);
 
-        winCondition.ShowNewWaveText();
+        StartNewWave();
+
     }
 
     public void MoreMaxUnits()
     {
         spawnUnitsHandler.maxAmountOfFriendlyUnits += 2;
 
+        StartNewWave();
+
+    }
+
+    public void RepairCastle()
+    {
+        castleHealth.currentHealth = castleHealth.castleMaxHealth;
+
+        StartNewWave();
+    }
+
+    public void CastleMaxHealthUpgrade()
+    {
+        castleHealth.castleMaxHealth += 25;
+
+        castleHealth.currentHealth += 25;
+
+        castleHealth.SetMaxHealth(castleHealth.castleMaxHealth);
+
+        StartNewWave();
+    }
+
+    private void StartNewWave()
+    {
         winCondition.ShowNewWaveText();
     }
 }
