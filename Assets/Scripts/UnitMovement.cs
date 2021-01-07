@@ -25,7 +25,7 @@ public class UnitMovement : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
         winCondition = FindObjectOfType<WinCondition>();
 
-        modifiedDamage = unitConfig.damage + (winCondition.enemyExponentialDifficulty / 3);
+        modifiedDamage = unitConfig.damage + (winCondition.enemyExponentialDifficulty / 5);
 
         SetMoveDirection();
         SetMoveSpeed();
