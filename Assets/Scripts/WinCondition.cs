@@ -108,7 +108,7 @@ public class WinCondition : MonoBehaviour
 
         spellHandler.explosionSpells = 1;
 
-        goldConjuror.amountOfConjurors = 0;
+        //goldConjuror.amountOfConjurors = 0;
 
         enemyExponentialDifficulty = Mathf.Pow(1.1f, currentWave);
 

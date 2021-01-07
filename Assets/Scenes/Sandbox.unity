@@ -4362,8 +4362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldText: {fileID: 1024745843}
-  startingWaveGold: 50
-  currentGold: 50
+  startingWaveGold: 20
+  currentGold: 20
 --- !u!4 &1510241251
 Transform:
   m_ObjectHideFlags: 0
