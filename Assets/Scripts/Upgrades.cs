@@ -13,6 +13,7 @@ public class Upgrades : MonoBehaviour
     [SerializeField] BuyUnitButton knight3BuyUnitButton;
     [SerializeField] BuyUnitButton goldConjurorBuyUnitButton;
     [SerializeField] BuyUnitButton explosionSpellButton;
+    [SerializeField] BuyUnitButton MageBuyUnitButton;
     [SerializeField] GameObject goldConjurorGameObject = null;
     [SerializeField] Health castleHealth = null;
 
@@ -48,6 +49,15 @@ public class Upgrades : MonoBehaviour
         knight3BuyUnitButton.isUnlocked = true;
 
         knight3BuyUnitButton.CheckIfUnlocked();
+
+        StartNewWave();
+    }
+
+    public void UnlockMage()
+    {
+        MageBuyUnitButton.isUnlocked = true;
+
+        MageBuyUnitButton.CheckIfUnlocked();
 
         StartNewWave();
     }

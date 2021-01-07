@@ -9,6 +9,8 @@ public class RangedAttacker : MonoBehaviour
     [SerializeField] private float fireDistance = 100f;
     [SerializeField] private GameObject fireballPrefab = null;
 
+    [SerializeField] private LayerMask[] ignoredLayers;
+
 
     Animator myAnimator;
     UnitMovement unitMovement;
@@ -31,33 +33,47 @@ public class RangedAttacker : MonoBehaviour
     {
         if (hitEnemy)
         {
+            if (hitEnemy.GetComponent<Health>().currentHealth <= 0)
+            {
+                hitEnemy = null;
+            }
+        }
+
+
+        if (hitEnemy)
+        {
             unitMovement.isAttacking = true;
+            myAnimator.SetBool("isAttacking", true);
+
         }
         else
         {
-            //unitMovement.isAttacking = false;
+            unitMovement.isAttacking = false;
+            myAnimator.SetBool("isAttacking", false);
+
         }
     }
 
     private void CheckIfTargetInRange()
     {
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, Vector2.right, fireDistance);
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, Vector2.right, fireDistance, ~ignoredLayers[0], ~ignoredLayers[1]);
 
         Debug.DrawRay(firePoint.position, Vector2.right * fireDistance, Color.green);
 
-        if (hit)
-        {
-            if (hit.transform.gameObject.CompareTag("Unit"))
-            {
-                hitEnemy = hit.transform.gameObject;
-                myAnimator.SetBool("isAttacking", true);
 
-            }
-            else
-            {
-                hitEnemy = null;
-                myAnimator.SetBool("isAttacking", false);
-            }
+        if (!hit)
+        {
+            hitEnemy = null;
+            return;
+        }
+
+        if (hit.transform.gameObject.GetComponent<Enemy>())
+        {
+            hitEnemy = hit.transform.gameObject;
+        }
+        else
+        {
+            hitEnemy = null;
         }
     }
 

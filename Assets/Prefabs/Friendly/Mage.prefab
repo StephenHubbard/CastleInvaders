@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5402294125261415027}
   - component: {fileID: 4325275725457095140}
   m_Layer: 9
-  m_Name: Knight_4
+  m_Name: Mage
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ Animator:
   m_GameObject: {fileID: 760928826124964178}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3ed3641b8dd90ba499d8815e26a3fd61, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8b9745774b329b04ea6d7bf080496bbc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -196,8 +196,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 5881716230107224260}
-  fireDistance: 100
-  fireballPrefab: {fileID: 0}
+  fireDistance: 7
+  fireballPrefab: {fileID: 3852224334802621123, guid: d3f5933d023da6447836f6662d9549e2, type: 3}
+  ignoredLayers:
+  - serializedVersion: 2
+    m_Bits: 512
+  - serializedVersion: 2
+    m_Bits: 4096
+  hitEnemy: {fileID: 0}
 --- !u!1 &4649193068726059469
 GameObject:
   m_ObjectHideFlags: 0

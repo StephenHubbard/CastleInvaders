@@ -48,6 +48,11 @@ public class UnitMovement : MonoBehaviour
             Vector2 characterVelocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y) * Time.deltaTime;
             rb.velocity = characterVelocity;
         }
+        else
+        {
+            Vector2 characterVelocity = new Vector2(moveDirection * 0, rb.velocity.y) * Time.deltaTime;
+            rb.velocity = characterVelocity;
+        }
     }
 
     public void Attack()
