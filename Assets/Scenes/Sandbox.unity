@@ -2098,6 +2098,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0d5e42dbcae4b9a4facb64faf00833bd, type: 2}
   - {fileID: 11400000, guid: 4f339e30fc9cf5946a8edf48991a9ca6, type: 2}
   - {fileID: 11400000, guid: fd8e67008e976924a8395663ac6fc9b1, type: 2}
+  - {fileID: 11400000, guid: 74018483fd7b62b4e8e6b7f758f9314e, type: 2}
   spawnUnitsContainer: {fileID: 1626280136}
   unitsToSpawnThisWave: 0
 --- !u!1 &861270587
@@ -8710,7 +8711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8641732796664867274, guid: d2271b18e5fc05b418109195a3699c31, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 8641732796664867274, guid: d2271b18e5fc05b418109195a3699c31, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

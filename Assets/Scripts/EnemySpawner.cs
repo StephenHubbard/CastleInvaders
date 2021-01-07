@@ -62,6 +62,7 @@ public class EnemySpawner : MonoBehaviour
             maxNum = winCondition.currentWave / 2;
         }
 
+
         int randomIndex = Random.Range(0, maxNum);
 
         unitIndexToSpawn = randomIndex;
