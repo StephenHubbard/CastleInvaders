@@ -18,3 +18,4 @@ MonoBehaviour:
   unitPrefab: {fileID: 418063994406136410, guid: 5de412b7dcd56f74fb8306a39619c5fe, type: 3}
   startingHealth: 5
   goldCost: 0
+  moveSpeed: 15

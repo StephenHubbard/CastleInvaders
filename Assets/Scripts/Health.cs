@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
         {
             int healthBonus;
 
-            healthBonus = winCondition.currentWave / 5;
+            healthBonus = (int) winCondition.enemyExponentialDifficulty;
 
             SetMaxHealth(unitConfig.startingHealth + healthBonus);
 
@@ -78,8 +78,6 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
-            // detect if enemy unit
-            
         }
     }
 

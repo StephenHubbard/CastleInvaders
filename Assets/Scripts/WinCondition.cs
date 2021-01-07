@@ -22,6 +22,7 @@ public class WinCondition : MonoBehaviour
     private SpellHandler spellHandler;
 
     public int currentWave = 1;
+    public float enemyExponentialDifficulty = 0.1f;
 
     public bool roundComplete = false;
 
@@ -108,6 +109,8 @@ public class WinCondition : MonoBehaviour
         spellHandler.explosionSpells = 1;
 
         goldConjuror.amountOfConjurors = 0;
+
+        enemyExponentialDifficulty = Mathf.Pow(1.1f, currentWave);
 
         newWaveTextContainer.SetActive(false);
 

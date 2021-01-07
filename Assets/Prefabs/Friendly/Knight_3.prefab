@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6e7cae86a94b34f88350a600b06ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 20
   rb: {fileID: 3918607568525521631}
   unitConfig: {fileID: 11400000, guid: 731a31205aed8dd41abebfd354f0f2b6, type: 2}
   isAttacking: 0

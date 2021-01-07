@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] Rigidbody2D rb = null;
     [SerializeField] public UnitConfig unitConfig;
+    [SerializeField] private float modifiedDamage;
 
     private int moveDirection;
     public bool isAttacking = false;
@@ -15,13 +17,23 @@ public class UnitMovement : MonoBehaviour
     Collider2D myCollider;
 
     private GameObject myAttacker;
+    private WinCondition winCondition;
 
     void Start()
     {
         myAnimator = GetComponent<Animator>();
         myCollider = GetComponent<Collider2D>();
+        winCondition = FindObjectOfType<WinCondition>();
+
+        modifiedDamage = unitConfig.damage + (winCondition.enemyExponentialDifficulty / 3);
 
         SetMoveDirection();
+        SetMoveSpeed();
+    }
+
+    private void SetMoveSpeed()
+    {
+        moveSpeed = unitConfig.moveSpeed;
     }
 
     private void SetMoveDirection()
@@ -59,6 +71,13 @@ public class UnitMovement : MonoBehaviour
     {
         Health myAttackerHealth = myAttacker.GetComponent<Health>();
         myAttackerHealth.TakeDamage(unitConfig.damage);
+    }
+
+    public void EnemyAttack()
+    {
+        Health myAttackerHealth = myAttacker.GetComponent<Health>();
+        myAttackerHealth.TakeDamage((int)modifiedDamage);
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)

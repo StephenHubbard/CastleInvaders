@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 1293359055959816347}
   - component: {fileID: 6758368009018739845}
   - component: {fileID: 6656472214803508036}
-  - component: {fileID: -2796185447108146426}
+  - component: {fileID: -7203747998412398947}
   m_Layer: 10
   m_Name: Pirate_4
   m_TagString: Unit
@@ -387,9 +387,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6e7cae86a94b34f88350a600b06ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 20
   rb: {fileID: 6758368009018739845}
   unitConfig: {fileID: 11400000, guid: 74018483fd7b62b4e8e6b7f758f9314e, type: 2}
+  modifiedDamage: 0
   isAttacking: 0
 --- !u!61 &8184198312171697416
 BoxCollider2D:
@@ -504,7 +505,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-2796185447108146426
+--- !u!114 &-7203747998412398947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

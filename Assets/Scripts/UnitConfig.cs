@@ -11,6 +11,7 @@ public class UnitConfig : ScriptableObject
     [SerializeField] public GameObject unitPrefab = null;
     [SerializeField] public int startingHealth = 3;
     [SerializeField] public int goldCost = 0;
+    [SerializeField] public int moveSpeed = 20;
 
     public int GetDamage()
     {

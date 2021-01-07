@@ -56,10 +56,9 @@ public class RangedAttacker : MonoBehaviour
 
     private void CheckIfTargetInRange()
     {
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, Vector2.right, fireDistance, ~ignoredLayers[0], ~ignoredLayers[1]);
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, Vector2.right, fireDistance, ~ignoredLayers[0] & ~ignoredLayers[1]);
 
         Debug.DrawRay(firePoint.position, Vector2.right * fireDistance, Color.green);
-
 
         if (!hit)
         {
