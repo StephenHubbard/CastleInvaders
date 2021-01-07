@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
     {
         int maxNum;
 
-        if (winCondition.currentWave > unitConfigs.Length)
+        if (winCondition.currentWave / 2 > unitConfigs.Length)
         {
             maxNum = unitConfigs.Length;
         }
@@ -61,7 +61,6 @@ public class EnemySpawner : MonoBehaviour
         {
             maxNum = winCondition.currentWave / 2;
         }
-
 
         int randomIndex = Random.Range(0, maxNum);
 
