@@ -9,6 +9,7 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] public UnitConfig unitConfig;
 
     private int moveDirection;
+    public bool isAttacking = false;
 
     Animator myAnimator;
     Collider2D myCollider;
@@ -42,8 +43,11 @@ public class UnitMovement : MonoBehaviour
 
     private void moveCharacter()
     {
-        Vector2 characterVelocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
-        rb.velocity = characterVelocity;
+        if (isAttacking == false)
+        {
+            Vector2 characterVelocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y) * Time.deltaTime;
+            rb.velocity = characterVelocity;
+        }
     }
 
     public void Attack()

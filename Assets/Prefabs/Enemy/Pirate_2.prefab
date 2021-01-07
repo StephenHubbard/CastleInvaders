@@ -386,9 +386,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6e7cae86a94b34f88350a600b06ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 15
   rb: {fileID: 6758368009018739845}
   unitConfig: {fileID: 11400000, guid: 4f339e30fc9cf5946a8edf48991a9ca6, type: 2}
+  isAttacking: 0
 --- !u!61 &8184198312171697416
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -429,6 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 133732721990721539}
   currentHealth: 0
+  castleMaxHealth: 0
   gradient:
     serializedVersion: 2
     key0: {r: 0.8773585, g: 0.07035423, b: 0.07035423, a: 1}
@@ -460,6 +462,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   fill: {fileID: 133732721234810395}
   unitConfig: {fileID: 11400000, guid: 4f339e30fc9cf5946a8edf48991a9ca6, type: 2}
+  castleHitPointsText: {fileID: 0}
 --- !u!50 &6758368009018739845
 Rigidbody2D:
   serializedVersion: 4

@@ -50,9 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6e7cae86a94b34f88350a600b06ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 15
   rb: {fileID: 3918607568525521631}
   unitConfig: {fileID: 11400000, guid: 1b13a9801c4a47440a1dc62a80ead145, type: 2}
+  isAttacking: 0
 --- !u!95 &4464224058018587161
 Animator:
   serializedVersion: 3
@@ -133,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 9018649022866340854}
   currentHealth: 0
+  castleMaxHealth: 0
   gradient:
     serializedVersion: 2
     key0: {r: 0.8773585, g: 0.07035423, b: 0.07035423, a: 1}
@@ -164,6 +166,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   fill: {fileID: 9018649021649165511}
   unitConfig: {fileID: 11400000, guid: 1b13a9801c4a47440a1dc62a80ead145, type: 2}
+  castleHitPointsText: {fileID: 0}
 --- !u!114 &5402294125261415027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,9 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874888c4ab5e1934e8a66a095e4b86cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draggableLayerMask:
-    serializedVersion: 2
-    m_Bits: 2048
+  draggableConjurorModel: {fileID: 0}
+  goldConjurorTransform: {fileID: 0}
 --- !u!1 &9018649021578101169
 GameObject:
   m_ObjectHideFlags: 0
