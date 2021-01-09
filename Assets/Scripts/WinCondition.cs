@@ -20,9 +20,10 @@ public class WinCondition : MonoBehaviour
     private SpawnUnitsHandler spawnUnitsHandler;
     private GoldConjuror goldConjuror;
     private SpellHandler spellHandler;
+    private Tips tips;
 
     public int currentWave = 1;
-    public float enemyExponentialDifficulty = 0.1f;
+    public float enemyExponentialDifficulty = 0.2f;
 
     public bool roundComplete = false;
 
@@ -33,6 +34,7 @@ public class WinCondition : MonoBehaviour
         spawnUnitsHandler = FindObjectOfType<SpawnUnitsHandler>();
         goldConjuror = FindObjectOfType<GoldConjuror>();
         spellHandler = FindObjectOfType<SpellHandler>();
+        tips = FindObjectOfType<Tips>();
 
         UpdateSliderMaxValue();
     }
@@ -109,6 +111,8 @@ public class WinCondition : MonoBehaviour
         spellHandler.explosionSpells = 1;
 
         //goldConjuror.amountOfConjurors = 0;
+
+        tips.newTip();
 
         enemyExponentialDifficulty = Mathf.Pow(1.1f, currentWave);
 

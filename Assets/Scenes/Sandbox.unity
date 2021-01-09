@@ -2109,6 +2109,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0d5e42dbcae4b9a4facb64faf00833bd, type: 2}
   - {fileID: 11400000, guid: 4f339e30fc9cf5946a8edf48991a9ca6, type: 2}
   - {fileID: 11400000, guid: fd8e67008e976924a8395663ac6fc9b1, type: 2}
+  - {fileID: 11400000, guid: 369fcc696bdfc464f8ee4b4e5ccb9ecf, type: 2}
   - {fileID: 11400000, guid: 74018483fd7b62b4e8e6b7f758f9314e, type: 2}
   spawnUnitsContainer: {fileID: 1626280136}
   unitsToSpawnThisWave: 0
@@ -4342,6 +4343,7 @@ GameObject:
   - component: {fileID: 1510241250}
   - component: {fileID: 1510241252}
   - component: {fileID: 1510241253}
+  - component: {fileID: 1510241254}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -4398,7 +4400,7 @@ MonoBehaviour:
   spawnUnitsContainer: {fileID: 1096756372}
   SpawnedUnitsContainerEnemy: {fileID: 1626280137}
   currentWave: 1
-  enemyExponentialDifficulty: 0.1
+  enemyExponentialDifficulty: 0.2
   roundComplete: 0
 --- !u!114 &1510241253
 MonoBehaviour:
@@ -4417,6 +4419,26 @@ MonoBehaviour:
   explosionFX: {fileID: 5283864291875907365, guid: 0c8ae885669b92041bcbc986daa836cd, type: 3}
   explosionSpells: 1
   explosionButton: {fileID: 690743767}
+--- !u!114 &1510241254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510241249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0643fd6e4e29b7418b5bd3702943301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipsArray:
+  - "Drag friendly units into the barrel if you need to destroy them.\t"
+  - "Gold Conjurors generate 1 gold every two seconds. \t"
+  - 'Enemies heatlh scales with higher waves. '
+  - "You can use the explosion spell once per wave. \t"
+  - 'The blue flag indicates your max amount of units. '
+  tipText: {fileID: 455501399}
+  randomTip: 0
 --- !u!1 &1520766914
 GameObject:
   m_ObjectHideFlags: 0
@@ -8938,6 +8960,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UnlockKnight3
       objectReference: {fileID: 0}
+    - target: {fileID: 8641732795379122537, guid: d2271b18e5fc05b418109195a3699c31, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 902.402
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641732795379122537, guid: d2271b18e5fc05b418109195a3699c31, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641732795379122538, guid: d2271b18e5fc05b418109195a3699c31, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8641732795979443959, guid: d2271b18e5fc05b418109195a3699c31, type: 3}
       propertyPath: buyUnitButton
       value: 
@@ -9066,5 +9100,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5489914536821124510, guid: d2271b18e5fc05b418109195a3699c31, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2271b18e5fc05b418109195a3699c31, type: 3}

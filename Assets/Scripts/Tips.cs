@@ -7,26 +7,28 @@ public class Tips : MonoBehaviour
 {
     [TextArea(3, 10)]
     [SerializeField] private string[] tipsArray;
-
     [SerializeField] private TMP_Text tipText = null;
+
+    [SerializeField] private int randomTip;
 
     WinCondition winCondition;
 
     private void Start()
     {
         winCondition = FindObjectOfType<WinCondition>();
+
+        randomTip = Random.Range(0, winCondition.currentWave - 1);
+
     }
 
     private void Update()
     {
-        if (tipsArray.Length >= winCondition.currentWave - 1)
-        {
-            tipText.text = tipsArray[(winCondition.currentWave - 2)];
-        }
-        else
-        {
-            tipText.text = "Good Luck!";
-        }
-
+        tipText.text = tipsArray[(randomTip)];
     }
+
+    public void newTip()
+    {
+        randomTip = Random.Range(0, winCondition.currentWave);
+    }
+
 }

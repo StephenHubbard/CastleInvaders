@@ -7,7 +7,7 @@ public class GoldConjuror : MonoBehaviour
 {
     [SerializeField] TMP_Text amountText = null;
     [SerializeField] public int amountOfConjurors = 0;
-    [SerializeField] private int goldPerConjuror = 10;
+    [SerializeField] private int goldPerConjuror = 1;
 
     public GoldHandler goldHandler;
 
@@ -28,7 +28,7 @@ public class GoldConjuror : MonoBehaviour
     private IEnumerator IncreaseGold()
     {
         goldHandler.currentGold = goldHandler.currentGold + (amountOfConjurors * goldPerConjuror);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         StartCoroutine(IncreaseGold());
 
     }

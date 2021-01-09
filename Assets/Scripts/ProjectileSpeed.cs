@@ -12,9 +12,9 @@ public class ProjectileSpeed : MonoBehaviour
         
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        Vector2 projectileVelocity = new Vector2(projectileSpeed, rb.velocity.y) * Time.deltaTime;
+        Vector2 projectileVelocity = new Vector2(projectileSpeed * Time.fixedDeltaTime, rb.velocity.y);
         rb.velocity = projectileVelocity;
     }
 

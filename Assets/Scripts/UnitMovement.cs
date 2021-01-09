@@ -9,6 +9,7 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] Rigidbody2D rb = null;
     [SerializeField] public UnitConfig unitConfig;
     [SerializeField] private float modifiedDamage;
+    [SerializeField] private AudioSource attackSFX;
 
     private int moveDirection;
     public bool isAttacking = false;
@@ -48,7 +49,7 @@ public class UnitMovement : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         moveCharacter();
     }
@@ -57,12 +58,12 @@ public class UnitMovement : MonoBehaviour
     {
         if (isAttacking == false)
         {
-            Vector2 characterVelocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y) * Time.deltaTime;
+            Vector2 characterVelocity = new Vector2(moveDirection * moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
             rb.velocity = characterVelocity;
         }
         else
         {
-            Vector2 characterVelocity = new Vector2(moveDirection * 0, rb.velocity.y) * Time.deltaTime;
+            Vector2 characterVelocity = new Vector2(moveDirection * 0, rb.velocity.y);
             rb.velocity = characterVelocity;
         }
     }
@@ -71,12 +72,16 @@ public class UnitMovement : MonoBehaviour
     {
         Health myAttackerHealth = myAttacker.GetComponent<Health>();
         myAttackerHealth.TakeDamage(unitConfig.damage);
+
+        attackSFX.Play();
     }
 
     public void EnemyAttack()
     {
         Health myAttackerHealth = myAttacker.GetComponent<Health>();
         myAttackerHealth.TakeDamage((int)modifiedDamage);
+
+        attackSFX.Play();
 
     }
 

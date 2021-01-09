@@ -17,4 +17,5 @@ MonoBehaviour:
   isEnemy: 0
   unitPrefab: {fileID: 3326852206102816766, guid: 1fe7f7447f0759d4b91a8e9639ce3a23, type: 3}
   startingHealth: 1
-  goldCost: 5
+  goldCost: 0
+  moveSpeed: 20
