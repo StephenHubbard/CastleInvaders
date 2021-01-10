@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using System;
+using UnityEngine.SceneManagement;
 
 public class WinCondition : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class WinCondition : MonoBehaviour
     [SerializeField] GameObject waveCompleteGameObject = null;
     [SerializeField] private GameObject spawnUnitsContainer = null;
     [SerializeField] private Transform SpawnedUnitsContainerEnemy = null;
+    [SerializeField] GameObject gameOverText = null;
+    [SerializeField] Health castleHealth = null;
 
     private EnemySpawner enemySpawner;
     private GoldHandler goldHandler;
@@ -22,10 +25,16 @@ public class WinCondition : MonoBehaviour
     private SpellHandler spellHandler;
     private Tips tips;
 
+
     public int currentWave = 1;
-    public float enemyExponentialDifficulty = 0.2f;
+    public float enemyExponentialDifficulty = 0f;
 
     public bool roundComplete = false;
+
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
 
     private void Start()
     {
@@ -46,8 +55,25 @@ public class WinCondition : MonoBehaviour
         {
             checkWinCondition();
         }
+
+        CheckIfPlayerLose();
     }
 
+    private void CheckIfPlayerLose()
+    {
+        if (castleHealth.currentHealth <= 0)
+        {
+            gameOverText.SetActive(true);
+
+            Time.timeScale = 0;
+        }
+    }
+
+    public void StartOverButton()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
 
     private void updateSlider()
     {
@@ -114,7 +140,7 @@ public class WinCondition : MonoBehaviour
 
         tips.newTip();
 
-        enemyExponentialDifficulty = Mathf.Pow(1.1f, currentWave);
+        enemyExponentialDifficulty = Mathf.Pow(1.2f, currentWave);
 
         newWaveTextContainer.SetActive(false);
 

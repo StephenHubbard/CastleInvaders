@@ -17,8 +17,7 @@ public class Tips : MonoBehaviour
     {
         winCondition = FindObjectOfType<WinCondition>();
 
-        randomTip = Random.Range(0, winCondition.currentWave - 1);
-
+        randomTip = Random.Range(0, tipsArray.Length);
     }
 
     private void Update()
@@ -28,7 +27,7 @@ public class Tips : MonoBehaviour
 
     public void newTip()
     {
-        randomTip = Random.Range(0, winCondition.currentWave);
+        randomTip = Random.Range(0, tipsArray.Length);
     }
 
 }

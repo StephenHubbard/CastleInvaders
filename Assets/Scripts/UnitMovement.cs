@@ -9,7 +9,6 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] Rigidbody2D rb = null;
     [SerializeField] public UnitConfig unitConfig;
     [SerializeField] private float modifiedDamage;
-    [SerializeField] private AudioSource attackSFX;
 
     private int moveDirection;
     public bool isAttacking = false;
@@ -26,7 +25,10 @@ public class UnitMovement : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
         winCondition = FindObjectOfType<WinCondition>();
 
-        modifiedDamage = unitConfig.damage + (winCondition.enemyExponentialDifficulty / 5);
+        if (unitConfig.isEnemy)
+        {
+            modifiedDamage = unitConfig.damage + (winCondition.enemyExponentialDifficulty / 10);
+        }
 
         SetMoveDirection();
         SetMoveSpeed();
@@ -73,15 +75,12 @@ public class UnitMovement : MonoBehaviour
         Health myAttackerHealth = myAttacker.GetComponent<Health>();
         myAttackerHealth.TakeDamage(unitConfig.damage);
 
-        attackSFX.Play();
     }
 
     public void EnemyAttack()
     {
         Health myAttackerHealth = myAttacker.GetComponent<Health>();
         myAttackerHealth.TakeDamage((int)modifiedDamage);
-
-        attackSFX.Play();
 
     }
 
